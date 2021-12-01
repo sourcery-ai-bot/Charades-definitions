@@ -67,6 +67,8 @@ class MainGame():
     def run_timer(self):
         # Variable to determine when the timer starts
         start = pygame.time.get_ticks()
+        timer_sound = pygame.mixer.Sound("Timer.mp3")
+        correct_sound = pygame.mixer.Sound("Congrats.mp3")
 
         while True:
             seconds = (pygame.time.get_ticks() - start) / 1000
@@ -74,6 +76,7 @@ class MainGame():
             if seconds > self.time_limit:
                 print("Bummer, you ran out of time!")
                 #TODO: play timer end sound
+                pygame.mixer.Sound.play(timer_sound)
                 return False
 
             else:
@@ -85,6 +88,7 @@ class MainGame():
                     if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                         print("Congratulations you earned a point!")
                         #TODO: play congrats sound
+                        pygame.mixer.Sound.play(correct_sound)
                         return False
                     elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                         return True
