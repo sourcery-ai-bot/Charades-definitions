@@ -14,7 +14,14 @@ class MainGame():
         # TODO: Add genres as keys to dictionary and populate the value list with words
         self.words = {
             'genre1':[], # words in the list mapped to the genre key
-            'genre2':[],
+            'animals':["Baboon", "Buffalo", "Cobra", "Crane", "Crow",
+            "Dolphin", "Dragonfly", "Elephant", "Frog",
+            "Goose", "Horse",
+            "Jaguar", "Koala",
+            "Magpie", "Mole", "Monkey", "Mosquito",
+            "Pelican", "Penguin", "Pigeon", "Pony", "Porcupine", "Rabbit", "Raccoon", "Reindeer",
+            "Seahorse", "Sheep", "Snake", "Spider", "Squirrel", "Tiger", "Toad",
+            "Walrus", "Whale", "Wolf", "Worm", "Zebra"],
             'genre3':[],
             'genre4':[]
         }
@@ -55,7 +62,6 @@ class MainGame():
                             timer_running = True
                             print("Begin!")
                             game_over = self.run_timer()
-
             else:
                 game_over = True
 
@@ -67,16 +73,14 @@ class MainGame():
     def run_timer(self):
         # Variable to determine when the timer starts
         start = pygame.time.get_ticks()
-        timer_sound = pygame.mixer.Sound("Timer.mp3")
-        correct_sound = pygame.mixer.Sound("Congrats.mp3")
-
         while True:
             seconds = (pygame.time.get_ticks() - start) / 1000
 
             if seconds > self.time_limit:
-                print("Bummer, you ran out of time!")
                 #TODO: play timer end sound
-                pygame.mixer.Sound.play(timer_sound)
+                timer_sound = pygame.mixer.Sound('Buzzer.mp3')
+                timer_sound.play()
+                print("Bummer, you ran out of time!")
                 return False
 
             else:
@@ -86,9 +90,10 @@ class MainGame():
                 # game has been quit
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                        print("Congratulations you earned a point!")
                         #TODO: play congrats sound
-                        pygame.mixer.Sound.play(correct_sound)
+                        correct_sound = pygame.mixer.Sound('Congrats.mp3')
+                        correct_sound.play()
+                        print("Congratulations you earned a point!")
                         return False
                     elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                         return True
@@ -118,6 +123,7 @@ class MainGame():
 ### Logic Flow (A, B, C are arbitrary)
 # Startup (maybe give user the option to chose time limit and definition penalty)
 pygame.init()
+screen = pygame.display.set_mode((200, 200))
 main_game = MainGame()
 print("Welcome to charades!")
 
