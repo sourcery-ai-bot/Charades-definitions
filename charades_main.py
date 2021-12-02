@@ -13,7 +13,11 @@ class MainGame():
         self.dictionary = Dictionary()
         # TODO: Add genres as keys to dictionary and populate the value list with words
         self.words = {
-            'genre1':[], # words in the list mapped to the genre key
+            'Tools':[
+                "Hammer","Brush","nails", "Bolt", "Screwdriver", "Wrench", "Nail-gun", "Chainsaw", "Mallet", "Plunger",
+                "Jackhammer", "Toolkit",
+            ],
+
             'animals':["Baboon", "Buffalo", "Cobra", "Crane", "Crow",
             "Dolphin", "Dragonfly", "Elephant", "Frog",
             "Goose", "Horse",
@@ -22,8 +26,13 @@ class MainGame():
             "Pelican", "Penguin", "Pigeon", "Pony", "Porcupine", "Rabbit", "Raccoon", "Reindeer",
             "Seahorse", "Sheep", "Snake", "Spider", "Squirrel", "Tiger", "Toad",
             "Walrus", "Whale", "Wolf", "Worm", "Zebra"],
-            'genre3':[],
-            'genre4':[]
+
+            'Sports':["Football", "Soccer", "Cricket", "Hockey", "Tennis", "Baseball", "Volleyball", "Golf",
+                "Badmitton", "Fishing", "Archery", "Fencing", "Boxing", "Fencing", "Polo"
+            ],
+
+            'Musical-Instruments':["Violin", "Guitar", "Drums", "Trumpet", "Flute", "Saxophone", "Tuba", "Piano", "Clarinet"]
+            
         }
 
     def run(self):
