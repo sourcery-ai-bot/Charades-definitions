@@ -19,16 +19,16 @@ class Dictionary():
     def get_language(self):
         if (self.args.a == "all"):
             self.help()
-        if (self.args.l == "uk"):
-            self.lang = "en_GB"
-        elif self.args.l == "hi":
-            self.lang = "hi"
-        elif self.args.l == "fr":
-            self.lang == "fr"
+        if self.args.l == "de":
+            self.lang == "de"
         elif self.args.l == "es":
             self.lang = "es"
-        elif self.args.l == "de":
-            self.lang == "de"
+        elif self.args.l == "fr":
+            self.lang == "fr"
+        elif self.args.l == "hi":
+            self.lang = "hi"
+        elif self.args.l == "uk":
+            self.lang = "en_GB"
 
     def help(self):
         print("""Avaibales languages are: 
@@ -41,7 +41,7 @@ class Dictionary():
         """)
 
     def search(self, word):
-        url = "https://api.dictionaryapi.dev/api/v2/entries/"+self.lang+"/"+word
+        url = f"https://api.dictionaryapi.dev/api/v2/entries/{self.lang}/{word}"
         try:
             response = requests.get(url)
             responseText = response.text
@@ -87,5 +87,3 @@ class Dictionary():
                             #print("Unable to play audio")
         except KeyboardInterrupt:
             print("Quitting..")
-        except:
-            print("Unable to connect to the server! Try checking your Internet Connection")

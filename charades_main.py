@@ -48,8 +48,11 @@ class MainGame():
             # If word == none then there are no more words left in the list of words
             # for the specific genre key
             if word != None:
-                print("Player, your word is: {}".format(word))
-                definition_request = input("Would you like a definition for {}? Be warned, there is a {} second runoff on your timer if you get a definition (yes/no): ".format(word, self.definition_penalty))
+                print(f"Player, your word is: {word}")
+                definition_request = input(
+                    f"Would you like a definition for {word}? Be warned, there is a {self.definition_penalty} second runoff on your timer if you get a definition (yes/no): "
+                )
+
 
                 # Block of code to determine if the player wants a dictionary definition or not
                 if definition_request[0].lower() == "y":
@@ -148,23 +151,19 @@ while True:
         if genre not in genres:
             print("That is not an available genre")
         else:
-            print("The genre you have chosen to play is: {}".format(genre))
+            print(f"The genre you have chosen to play is: {genre}")
             break
-    else:
-        # TODO: assign the genre variable a random genre
-        pass
+default_time_limit = 60
 
 # This block of code determines if a player would like a custom time limit.  If not then
 # the time limit is set to the default time limit of 60 seconds.  Error checking is included
 while True:
     time_limit = input("Would you like a custom time limit?  Default time limit is 60 seconds. (time limit in seconds/n): ")
-    default_time_limit = 60
-
     if time_limit[0].lower() != "n":
         try:
             time_limit = int(time_limit)
             if time_limit > 0:
-                print("Time limit is {} seconds".format(time_limit))
+                print(f"Time limit is {time_limit} seconds")
                 break
             else:
                 print("Please pick a time limit that is greater than 0 seconds")
@@ -172,28 +171,28 @@ while True:
             print("Please enter a number in seconds")
     else:
         time_limit = default_time_limit
-        print("Time limit is {} seconds".format(time_limit))
+        print(f"Time limit is {time_limit} seconds")
+
+default_penalty = 10
 
 # This block of code determines if the player would like a custom definition penalty.  If not
 # then the definition penalty is set to the default penalty of 10 seconds.  Error checking is
 # included
 while True:
     definition_penalty = input("Would you like a custom definition penalty?  Default definition penalty is 10 seconds. (definition penalty in seconds/n): ")
-    default_penalty = 10
-
     if definition_penalty[0].lower() != "n":
         try:
             definition_penalty = int(definition_penalty)
             if definition_penalty > time_limit:
                 print("Please choose a definition penalty that is less than the time limit")
             else:
-                print("Definition penalty is {} seconds".format(definition_penalty))
+                print(f"Definition penalty is {definition_penalty} seconds")
                 break
         except ValueError:
             print("Please enter a number in seconds")
     else:
         definition_penalty = default_penalty
-        print("Definition penalty is {} seconds".format(definition_penalty))
+        print(f"Definition penalty is {definition_penalty} seconds")
 
 main_game = MainGame(time_limit, genre, definition_penalty)
 main_game.run()
